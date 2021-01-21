@@ -1,0 +1,14 @@
+neo4j
+sklearn
+altair
+altair-viewer
+jupyter
+scipy
+black
+flake8
+
+pandas
+numpy
+
+pytest
+
