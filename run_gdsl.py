@@ -144,8 +144,8 @@ RETURN p.name AS place, p.embeddingNode2vec AS embedding, country.code AS countr
             print(ex)
 
 def graph_node2vec(X):
-    print('*** graph_node2vec().')    
-    
+    print('*** graph_node2vec().')
+
     # NAA
     # - n_components=2 means visualize in 2 dimensions
     X_embedded = TSNE(n_components=2, random_state=6).fit_transform(list(X.embedding))
@@ -158,12 +158,21 @@ def graph_node2vec(X):
         "y": [value[1] for value in X_embedded]
     })
     print(df.head)
-    alt.Chart(df).mark_circle(size=60).encode(
+
+    return df
+
+from vega_datasets import data
+
+def plot_graph(df):
+    print('*** plot_graph.')
+
+    chart = alt.Chart(df).mark_circle(size=60).encode(
         x='x',
         y='y',
         color='country',
         tooltip=['place', 'country']
-    ).properties(width=700, height=400)
+    ).properties(width=700, height=400).interactive()
+    chart.show()
 
 
 def main():
@@ -172,7 +181,8 @@ def main():
     call_node2vec()
     write_node2vec()
     X = get_node2vec_embeddings()
-    graph_node2vec(X)
+    df = graph_node2vec(X)
+    plot_graph(df);
 
 
 if __name__ == "__main__":
