@@ -1,6 +1,7 @@
 #!/bin/bash
 
-make clean
+make clean-neo4j-plugins
+
 # NAA.
 # - ensure there is mount point available for 6_docker_run.sh
 mkdir ~/neo4j
