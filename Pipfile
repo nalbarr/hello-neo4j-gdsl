@@ -16,6 +16,9 @@ scipy = "*"
 #flake8 = "*"
 pandas = "*"
 numpy = "*"
+black = "*"
+flake8 = "*"
+pytest = "*"
 
 [requires]
 python_version = "3.7"
